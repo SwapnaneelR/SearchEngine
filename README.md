@@ -6,7 +6,7 @@
 
 *IDF* : inverse document frequency -> indicates how rare a "keyword" is.
 
-*IMPORTANCE = TF X IDF*
+*TF-IDF(IMPORTANCE) = TF X IDF*
 
 ```sh
 tf (t,d) = f(t,d) / sigma f(t,d)
