@@ -16,7 +16,7 @@ export default function Home() {
   const [response, setResponse] = useState<{ question: string; url: string }[]>([]);
 
   function handleSubmit() {
-    const q = `http://localhost:3000/search?query=${question}`;
+    const q = `https://dsa-dev-backend.vercel.app/search?query=${question}`;
     axios.get(q)
       .then(res => {
         console.log(res.data);
@@ -29,7 +29,7 @@ export default function Home() {
   function f(qn: string) {
     return qn.toLowerCase().replace(/ /g, '-');
   }
-    
+
 
   return (
     <div className="flex flex-col text-white items-center min-h-screen p-8 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-black">
