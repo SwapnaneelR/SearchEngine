@@ -4,9 +4,13 @@ import cors from "cors";
 
 const app = express()
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+  origin: "https://dsa-dev-gules.vercel.app",
+  methods: ["GET", "POST"],
+  credentials: true
+}));
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3002
 
 app.get('/', (req, res) => {
   res.send("Welcome to the API")
