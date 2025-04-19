@@ -26,6 +26,10 @@ export default function Home() {
         console.error("There was an error making the request:", error);
       }); 
   }
+  function f(qn: string) {
+    return qn.toLowerCase().replace(/ /g, '-');
+  }
+    
 
   return (
     <div className="flex flex-col text-white items-center min-h-screen p-8 pb-20 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-black">
@@ -62,7 +66,7 @@ export default function Home() {
               </CardHeader>
               <CardFooter>
                 <a
-                  href={item?.url}
+                  href= {`https://leetcode.com/problems/${f(item?.question)}`}
                   target="_blank"
                   className="text-yellow-400 hover:underline text-sm"
                 >
