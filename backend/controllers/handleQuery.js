@@ -1,14 +1,23 @@
 import fs from "fs";
+import path, { dirname } from "path";
+import { fileURLToPath } from "url";
+ 
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 function queryHandler(q) {
     let cachedQuestions = [];
     let cachedURLs = [];
-    
-
-    const qns = fs.readFileSync("./corpus/leetcode_title.txt", "utf8");
+ 
+    const filePath1 = path.resolve(__dirname, '../corpus/leetcode_title.txt');
+    const qns = fs.readFileSync(filePath1, 'utf-8');
     cachedQuestions = qns.split("\n");
 
-    const urls = fs.readFileSync("./corpus/leetcode_urls.txt", "utf8");
+    const filePath2 = path.resolve(__dirname, '../corpus/leetcode_urls.txt'); // assuming this was meant to be a different file
+    const urls = fs.readFileSync(filePath2, 'utf-8');
     cachedURLs = urls.split("\n");
+ 
 
     const results = [];
     q = String(q);
