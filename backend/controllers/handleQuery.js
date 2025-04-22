@@ -1,13 +1,13 @@
 import fs from "fs";
-
 function queryHandler(q) {
     let cachedQuestions = [];
     let cachedURLs = [];
+    
 
-    const qns = fs.readFileSync("../corpus/leetcode_title.txt", "utf8");
+    const qns = fs.readFileSync("./corpus/leetcode_title.txt", "utf8");
     cachedQuestions = qns.split("\n");
 
-    const urls = fs.readFileSync("../corpus/leetcode_urls.txt", "utf8");
+    const urls = fs.readFileSync("./corpus/leetcode_urls.txt", "utf8");
     cachedURLs = urls.split("\n");
 
     const results = [];
