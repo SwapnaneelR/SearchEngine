@@ -4,7 +4,6 @@ import { useState } from "react";
 import axios from "axios";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -13,25 +12,25 @@ import {
 
 export default function Home() {
   const [question, setQuestion] = useState("");
-  const [response, setResponse] = useState<{ question: string; url: string }[]>(
-    []
-  );
+  const [response, setResponse] = useState<string[]>([]);
+
+  // Convert spaces to hyphens for LeetCode URL
+  function formatForURL(qn?: string) {
+    if (!qn) return "";
+    return qn.replace(/\s+/g, "-");
+  }
 
   function handleSubmit() {
     const q = `https://dsa-dev-backend.vercel.app/search?query=${question}`;
     axios
       .get(q)
       .then((res) => {
-        console.log(res.data);
-        setResponse(res.data);
+        console.log(res.data); // should be an array of strings
+        setResponse(res.data || []);
       })
       .catch((error) => {
         console.error("There was an error making the request:", error);
       });
-  }
-  function f(qn?: string) {
-    if (!qn) return "";
-    return qn.toLowerCase().replace(/ /g, "-");
   }
 
   return (
@@ -71,14 +70,13 @@ export default function Home() {
               className="bg-inherit text-white w-full sm:w-[45%] md:w-[30%] min-w-[250px] max-w-xs p-6 rounded-2xl border border-white/10 shadow-sm"
             >
               <CardHeader className="space-y-2">
-                <CardTitle className="text-lg font-semibold">
-                  {item?.question}
-                </CardTitle>
+                <CardTitle className="text-lg font-semibold">{item}</CardTitle>
               </CardHeader>
               <CardFooter>
                 <a
-                  href={`https://leetcode.com/problems/${f(item?.question)}`}
+                  href={`https://leetcode.com/problems/${formatForURL(item)}`}
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="text-yellow-400 hover:underline text-sm"
                 >
                   View on LeetCode
