@@ -19,13 +19,9 @@ D = corpus , N = no of documents , nt = no of docs containing t
 
 
 
-### Similarity
+## Tech Stack 
 
-It is given by cosine identity : 
-
-```sh
-S = ( v . d ) / ( |v| |d| )
-```
-
-Similaity represent the actual similarity of query string with our document value 
-
+*Frontend* : Nextjs 
+*Backend* : ExpressJS and NodeJS
+*Scrapper* : Python
+*Deployment* : Vercel

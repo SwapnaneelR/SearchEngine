@@ -15,7 +15,7 @@ function queryHandler(q) {
         .filter(Boolean); // remove empty lines
 
     // Normalize query
-    q = String(q).toLowerCase().trim();
+    q = (q ?? "").toString().toLowerCase().trim();
     const terms = q.split(/\s+/);
 
     // Term Frequency
